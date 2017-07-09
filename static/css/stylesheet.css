@@ -1,0 +1,139 @@
+* {
+   padding: 0;
+   margin: 0 auto;
+   background: darkgrey;
+}
+
+#main {
+   width: 1000px;
+   height: auto;
+   background: lightblue;
+   border: 2px solid darkblue;
+}
+
+#info {
+   padding: 20px;
+   background: lightblue;
+}
+
+#info p {
+   background: lightblue;
+}
+
+ul {
+   background: lightblue;
+   list-style: none;
+}
+a {
+   background: lightblue;
+}
+#first_name, #last_name, #email, #password, #passwordconfirm {
+   background: white;
+}
+
+label {
+   background: lightblue;
+}
+
+h3 {
+   background: lightblue;
+}
+header {
+   border-bottom: 2px solid darkblue;
+   background: white;
+   padding: 5px;
+}
+
+header h1 {
+   display: inline;
+   text-align: left;
+   margin-right: 560px;
+   background: white;
+}
+
+header p, a {
+   display: inline;
+   text-align: right;
+   vertical-align: top;
+   background: white;
+}
+
+#content {
+   height: 100px;
+   width: 700px;
+   background: white;
+}
+
+#submit {
+   padding: 5px;
+   background: lightgrey;
+}
+
+.posted_msg {
+   margin: 20px;
+   padding: 10px;
+   width: 600px;
+   background: white;
+}
+
+.posted_msg h5, p{
+   background: white;
+}
+
+.posted_comment {
+   margin: 10px 10px 10px 100px;
+   padding: 10px;
+   width: 600px;
+   background: white;
+}
+
+.posted_comment h5, p{
+   background: white;
+}
+
+#post_area {
+   margin: 20px;
+   padding: 5px;
+   background: lightblue;
+}
+
+#post_form {
+   background: lightblue;
+   display: block;
+}
+
+#post_form p{
+   background: lightblue;
+}
+
+#post_area h3 {
+   background: lightblue;
+}
+
+#toggle {
+   margin: -10px auto 10px 500px;
+   width: 100px;
+   background: lightblue;
+}
+
+#toggle button{
+   padding: 5px;
+}
+
+#comment_field {
+   margin-left: 20px;
+   width: 600px;
+   background: white;
+}
+
+#comment_field p {
+   background: lightblue;
+}
+#comment {
+   background: lightblue;
+}
+
+#submit_comment {
+   padding: 5px;
+   vertical-align: top;
+}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Wall</title>
+  <meta name="The Wall" content="The Wall project">
+  <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/stylesheet.css') }}">
+</head>
+<div id='main'>
+<header>
+   <h1>CodingDojo Wall</h1>
+   <p>Welcome stranger!</p>
+</header>
+
+<body>
+   <div id='info'>
+   <ul>
+   {% with errors = get_flashed_messages() %}
+         {% for errors in errors: %}
+            <li>{{  errors  }}</li>
+         {% endfor %}
+   {% endwith %}
+   </ul>
+
+   <h3>Create a login to access the portal:</h3>
+   <form action='/create' method='POST' >
+      <p><label for="first_name">First Name:<input type="text" name="first_name" id="first_name"></label></p>
+      <p><label for="last_name">Last Name:<input type="text" name="last_name" id="last_name"></label></p>
+      <p><label for="email">Email Address:<input type="email" name="email" id="email"></label></p>
+      <p><label for="password">Password:<input type="password" name="password" id="password"></label></p>
+      <p><label for="passwordconfirm">Confirm Password:<input type="password" name="passwordconfirm" id="passwordconfirm"></label></p>
+      <p><input type="submit" value="Sign Up" id="submit"><a href="/login">I already have an account</a></p>
+   </form>
+   </div>
+
+</body>
+<footer>
+
+</footer>
+</div>
+</html>

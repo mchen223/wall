@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Wall</title>
+  <meta name="The Wall" content="The Wall project">
+  <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/stylesheet.css') }}">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ <script type="text/javascript">
+   $(document).ready(function(){
+      $('#toggle').click(function() {
+         $('#comment_field').toggle();
+      })
+      $('#toggle').click(function() {
+         $('#submit_comment').toggle();
+      })
+   });
+   </script>
+</head>
+<div id='main'>
+<header>
+   <h1>CodingDojo Wall</h1>
+   <p>Welcome {{  session['first_name'] }}!</p>
+   <a href="/logout">log off</a>
+</header>
+
+<body>
+   <div id='post_area'>
+      <h3>Post a message</h3>
+      <form action='/post' method='POST' id='post_form'>
+         <textarea wrap="hard" name="content" id="content"></textarea>
+         <p><input type="submit" value="Post a message" id="submit"></p>
+      </form>
+   </div>
+
+   <hr>
+   {% if post %}
+      {% for post in post: %}
+         <div class=posted_msg>
+            <h5>{{  post['full_name']  }} - {{  post['updated_at']  }}</h5>
+            <p>{{  post['message']  }}</p>
+         </div>
+         <div id='toggle'>
+            <button>Reply to Post</button>
+         </div>
+
+         <form action='/reply/{{post['id']}}' id="comment" method='POST'>
+            <textarea wrap="hard" name="content" id="comment_field" style="display: none"></textarea>
+            <input type="submit" value="Submit" id="submit_comment" style="display: none">
+            </form>
+         {% if comment %}
+            {% for comment in comment: %}
+            <div class=posted_comment>
+               <h5>{{  comment['full_name']  }} - {{  comment['updated_at']  }}</h5>
+               <p>{{  comment['comment']  }}</p>
+            </div>
+            {% endfor %}
+         {% endif %}
+      {% endfor %}
+   {% endif %}
+
+
+   <hr>
+</body>
+<footer>
+
+</footer>
+</div>
+</html>

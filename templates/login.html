@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>The Wall</title>
+  <meta name="The Wall" content="The Wall project">
+  <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/stylesheet.css') }}">
+</head>
+<div id='main'>
+<header>
+   <h1>CodingDojo Wall</h1>
+   <p>Welcome back, friend!</p>
+</header>
+
+<body>
+   <div id='info'>
+   {% with errors = get_flashed_messages() %}
+         {% for errors in errors: %}
+            <p>{{  errors  }}</p>
+         {% endfor %}
+   {% endwith %}
+
+   <h3>Login to access the portal:</h3>
+   <form action='/login_process' method='POST' id='data'>
+      <p><label for="email">Email Address:<input type="email" name="email" id="email"></label></p>
+      <p><label for="password">Password:<input type="password" name="password" id="password"></label></p>
+      <p><input type="submit" value="Log In" id="submit"><a href="/">I need to create an account</a></p>
+   </form>
+   </div>
+</body>
+<footer>
+
+</footer>
+</div>
+</html>
