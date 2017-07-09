@@ -90,13 +90,12 @@ def login_process():
 @app.route('/forum')
 def success():
     query = "SELECT messages.id, CONCAT_WS(' ', users.first_name, users.last_name) as full_name, messages.message, messages.updated_at FROM users JOIN messages ON users.id = messages.user_id ORDER BY messages.id DESC"
-    post = mysql.query_db(query)
+    messages = mysql.query_db(query)
 
     query = "SELECT CONCAT_WS(' ', users.first_name, users.last_name) as full_name, comments.comment, comments.updated_at FROM users JOIN messages ON users.id = messages.user_id JOIN comments ON messages.id = comments.message_id ORDER BY comments.updated_at ASC"
-    comment = mysql.query_db(query)
+    comments = mysql.query_db(query)
 
-
-    return render_template('wall.html', comment=comment, post = post)
+    return render_template('wall.html', comments=comments, messages = messages)
 
 @app.route('/post', methods=['POST'])
 def post():
@@ -105,6 +104,7 @@ def post():
         'user_id': session['user_id'],
         'content': request.form.get('content')
         }
+
     mysql.query_db(query, data)
 
     return redirect('/forum')
@@ -123,7 +123,7 @@ def reply(id):
 @app.route('/logout')
 def logout():
     session['login'] = False
-    get_flashed_messages()
+    errors = []
     return redirect('/')
 
 app.run(debug=True)

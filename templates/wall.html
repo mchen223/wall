@@ -10,12 +10,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
  <script type="text/javascript">
    $(document).ready(function(){
-      $('#toggle').click(function() {
-         $('#comment_field').toggle();
-      })
-      $('#toggle').click(function() {
-         $('#submit_comment').toggle();
-      })
+
+   });
+   $(document).on('click', '#toggle', function(){
+      $('#comment_field').toggle();
+      $('#submit_comment').toggle();
    });
    </script>
 </head>
@@ -36,32 +35,28 @@
    </div>
 
    <hr>
-   {% if post %}
-      {% for post in post: %}
+      {% for messages in messages: %}
          <div class=posted_msg>
-            <h5>{{  post['full_name']  }} - {{  post['updated_at']  }}</h5>
-            <p>{{  post['message']  }}</p>
+            <h5>{{  messages['full_name']  }} - {{  messages['updated_at']  }}</h5>
+            <p>{{  messages['message']  }}</p>
          </div>
          <div id='toggle'>
             <button>Reply to Post</button>
          </div>
 
-         <form action='/reply/{{post['id']}}' id="comment" method='POST'>
-            <textarea wrap="hard" name="content" id="comment_field" style="display: none"></textarea>
-            <input type="submit" value="Submit" id="submit_comment" style="display: none">
-            </form>
-         {% if comment %}
-            {% for comment in comment: %}
-            <div class=posted_comment>
-               <h5>{{  comment['full_name']  }} - {{  comment['updated_at']  }}</h5>
-               <p>{{  comment['comment']  }}</p>
-            </div>
-            {% endfor %}
-         {% endif %}
+      <form action='/reply/{{messages['id']}}' id="comment" method='POST'>
+         <textarea wrap="hard" name="content" id="comment_field" style="display: none"></textarea>
+         <input type="submit" value="Submit" id="submit_comment" style="display: none">
+         </form>
+         {% for comments in comments: %}
+            {% if messages['id'] == comments['message_id'] %}
+         <div class=posted_comment>
+            <h5>{{  comments['full_name']  }} - {{  comments['updated_at']  }}</h5>
+            <p>{{  comments['comment']  }}</p>
+         </div>
+            {% endif %}
+         {% endfor %}
       {% endfor %}
-   {% endif %}
-
-
    <hr>
 </body>
 <footer>
