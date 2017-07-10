@@ -110,25 +110,13 @@ header p, a {
    background: lightblue;
 }
 
-#toggle {
-   margin: -10px auto 10px 500px;
-   width: 100px;
-   background: lightblue;
-}
-
-#toggle button{
-   padding: 5px;
-}
-
 #comment_field {
    margin-left: 100px;
+   padding: 5px;
    width: 600px;
    background: white;
 }
 
-#comment_field p {
-   background: lightblue;
-}
 #comment {
    background: lightblue;
 }

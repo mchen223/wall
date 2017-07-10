@@ -92,9 +92,11 @@ def success():
     query = "SELECT messages.id, CONCAT_WS(' ', users.first_name, users.last_name) as full_name, messages.message, messages.updated_at FROM users JOIN messages ON users.id = messages.user_id ORDER BY messages.id DESC"
     messages = mysql.query_db(query)
 
-    query = "SELECT CONCAT_WS(' ', users.first_name, users.last_name) as full_name, comments.comment, comments.updated_at FROM users JOIN messages ON users.id = messages.user_id JOIN comments ON messages.id = comments.message_id ORDER BY comments.updated_at ASC"
+    query = "SELECT CONCAT_WS(' ', users.first_name, users.last_name) as full_name, comments.comment, comments.updated_at, messages.id, comments.message_id FROM users JOIN messages ON users.id = messages.user_id JOIN comments ON messages.id = comments.message_id ORDER BY comments.updated_at ASC"
     comments = mysql.query_db(query)
 
+    print messages
+    print comments
     return render_template('wall.html', comments=comments, messages = messages)
 
 @app.route('/post', methods=['POST'])

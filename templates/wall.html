@@ -7,6 +7,7 @@
   <meta name="The Wall" content="The Wall project">
   <link rel='stylesheet' type='text/css' href="{{ url_for('static', filename='css/stylesheet.css') }}">
 
+   </script>
 </head>
 <div id='main'>
 <header>
@@ -30,11 +31,6 @@
             <h5>{{  message['full_name']  }} - {{  message['updated_at']  }}</h5>
             <p>{{  message['message']  }}</p>
          </div>
-
-      <form action='/reply/{{message['id']}}' id="comment" method='POST'>
-         <textarea wrap="hard" name="content" id="comment_field" >Reply to Post</textarea>
-         <input type="submit" value="Submit" id="submit_comment" >
-         </form>
          {% for comment in comments: %}
             {% if message['id'] == comment['message_id'] %}
          <div class=posted_comment>
@@ -43,6 +39,11 @@
          </div>
             {% endif %}
          {% endfor %}
+
+      <form action='/reply/{{message['id']}}' id="comment" method='POST'>
+         <textarea wrap="hard" name="content" id="comment_field" >Reply to post</textarea>
+         <input type="submit" value="Submit" id="submit_comment" >
+         </form>
       {% endfor %}
    <hr>
 </body>
